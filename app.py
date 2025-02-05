@@ -30,9 +30,35 @@ housing = load_housing_data()
 
 print(housing.head())
 
+housing.info()
+
+housing['ocean_proximity'].value_counts()
+
+housing.describe()
+
+import matplotlib.pyplot as plt
+housing.hist(bins=50, figsize=(20,15))
+plt.show()
+
 # Prepare the data for machine learning algorithms.
 
+import numpy as np
+
+def split_train_test(data, test_ratio):
+    print(f'length data = {len(data)}')
+    shuffled_indices = np.random.permutation(len(data))
+    print(f'shuffled_indices = {shuffled_indices}')
+    test_set_size = int(len(data) * test_ratio)
+    print(f'test_set_size = {test_set_size}')
+    test_indices = shuffled_indices[:test_set_size]
+    print(f'test_indices = {test_indices}')
+    train_indices = shuffled_indices[test_set_size:]  
+    print(f'train_indices = {train_indices}')
+    return data.iloc[train_indices], data.iloc[test_indices]
+
 # Select a model and train it.
+
+train_set, test_set = split_train_test(housing, 0.2)
 
 # Fine-tune your model.
 
