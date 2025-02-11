@@ -40,7 +40,7 @@ import matplotlib.pyplot as plt
 housing.hist(bins=50, figsize=(20,15))
 plt.show()
 
-# Prepare the data for machine learning algorithms.
+
 
 import numpy as np
 
@@ -55,6 +55,10 @@ def split_train_test(data, test_ratio):
     train_indices = shuffled_indices[test_set_size:]  
     print(f'train_indices = {train_indices}')
     return data.iloc[train_indices], data.iloc[test_indices]
+
+# Prepare the data for machine learning algorithms.
+
+
 
 # Select a model and train it.
 
